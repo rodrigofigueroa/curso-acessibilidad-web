@@ -12,6 +12,10 @@ window.onload = () => {
 
 /** Esta funcion se llama cuando la persona hace click en la fecha derecha del carousel para navegar a la derecha */
 function clickRight() {
+  console.log(
+    document.querySelector(".project-container")
+      ,getComputedStyle(document.querySelector(".project-container")).left
+  );
   const currentLeft = parseInt(
     getComputedStyle(document.querySelector(".project-container")).left,
     10

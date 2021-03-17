@@ -109,10 +109,18 @@ a{
 .nav-item:hover {
   background-color: var(--verde);
 }
+.nav-item:hover a{
+  color: var( --gris-oscuro );
+  cursor: pointer;
+}
 
 .intro {
   margin: 24px 196px 0px;
   font-family: var(--secondary-font);
+}
+
+.intro p {
+  color: #fff;
 }
 
 .social-media {
@@ -273,4 +281,8 @@ input {
   height: 400px;
   margin: 16px;
   width: 550px;
+}
+
+.input-label{
+  color: #fff;
 }

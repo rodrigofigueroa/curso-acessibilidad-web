@@ -63,7 +63,7 @@
       <section>
         <h2 class="header"> Mis Proyectos</h2>
         <div class="carousel">
-          <div class="arrow arrow-left"></div>
+          <div class="arrow arrow-left" aria-label="Botón hacia Atras"></div>
           <div class="window">
             <ul class="project-container">
               <li >
@@ -75,15 +75,15 @@
               <li >
                 <button class="project project3"><img src="./images/project3.png" alt="Project 3"></button>
               </li>
-              <li >
+              <li aria-hidden="true">
                 <button class="project project4"><img src="./images/project4.png" alt="Project 4"></button>
               </li>
-              <li >
+              <li aria-hidden="true">
                 <button class="project project5"><img src="./images/project5.png" alt="Project 5"></button>
               </li>
             </ul>
           </div>
-          <div class="arrow arrow-right"></div>
+          <div class="arrow arrow-right" aria-label="forward button" ></div>
         </div>
       </section>
     </main>
@@ -91,9 +91,19 @@
     <footer class="contact-section">
       <h2 class="header">Contacto</h2>
       <form class="form-container">
-        Nombre<input type="text" /> <br />
-        Correo<input type="text" /> <br />
-        <div class="message-input">Mensaje<input type="text" /> <br /></div>
+        <p class="input-label">
+          Nombre
+        </p>
+        <input type="text" aria-label="Ingresa tú nombre"/> <br />
+        <p class="input-label">
+          Correo
+        </p>
+        <input type="text" aria-label="Ingresa tú correo"/> <br />
+        <div class="message-input">
+          <p class="input-label">
+            Mensaje
+          </p>
+          <input type="text" /> <br /></div>
         <button class="send-button">Enviar</button>
       </form>
     </footer>

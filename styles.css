@@ -126,9 +126,17 @@ a{
 .social-media {
   align-items: center;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin: 32px auto 0;
-  width: 20%;
+  width: auto;
+}
+
+.social-media li a{
+  display: flex;
+  align-items: center;
+}
+.icon-link{
+  padding: 0px 10px;
 }
 
 .carousel {

@@ -57,6 +57,23 @@ body, header, section {
 a{
   text-decoration: none;
 }
+
+.skip-link{
+  height: 0;
+}
+
+.skip-link:focus,
+.skip-link:active{
+  background: var(--verde);
+  height: auto;
+  padding: 5px;
+  margin: 20px 10px;
+  color: var(--gris-oscuro);
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  position: absolute;
+}
+
 .header {
   color: var(--blanco);
   font-family: var(--main-font);

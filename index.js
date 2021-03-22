@@ -12,10 +12,6 @@ window.onload = () => {
 
 /** Esta funcion se llama cuando la persona hace click en la fecha derecha del carousel para navegar a la derecha */
 function clickRight() {
-  console.log(
-    document.querySelector(".project-container")
-      ,getComputedStyle(document.querySelector(".project-container")).left
-  );
   const currentLeft = parseInt(
     getComputedStyle(document.querySelector(".project-container")).left,
     10
@@ -25,6 +21,20 @@ function clickRight() {
   }
   let newValue = currentLeft - 270; //270 toma en cuenta el tamaño de la imagen mas sus margines
   document.querySelector(".project-container").style.left = `${newValue}px`;
+  console.log( newValue );
+  switch( newValue ){
+    case -270: 
+    document.querySelector( '.project1' ).setAttribute( 'tabindex', '-1' )
+    document.querySelector( '.project4' ).removeAttribute( 'tabindex' )
+    return
+    case -540:
+      document.querySelector( '.project2' ).setAttribute( 'tabindex', '-1' )
+      document.querySelector( '.project5' ).removeAttribute( 'tabindex' )
+    return
+    default:
+      return
+  }
+  
 }
 
 /** Esta funcion se llama cuando la persona hace click en la fecha izquierda del carousel para navegar a la izquierda */
@@ -38,6 +48,20 @@ function clickLeft() {
   }
   let newValue = currentLeft + 270;
   document.querySelector(".project-container").style.left = `${newValue}px`;
+  console.log( newValue );
+  debugger
+  switch( currentLeft ){
+    case -540: 
+      document.querySelector( '.project5' ).setAttribute( 'tabindex', '-1' )
+      document.querySelector( '.project2' ).removeAttribute( 'tabindex' )
+    return
+    case -270:
+      document.querySelector( '.project4' ).setAttribute( 'tabindex', '-1' )
+      document.querySelector( '.project1' ).removeAttribute( 'tabindex' )
+    return
+    default:
+      return
+  }
 }
 
 /** Esta funcion se llama cuando la persona hace click en el boton de enviar del formulario de contacto */

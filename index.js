@@ -4,9 +4,12 @@ window.onload = () => {
   document
     .querySelector(".send-button")
     .addEventListener("click", showNotification);
-  document.querySelectorAll(".project").forEach(element => {
-    element.addEventListener("click", e => openModal(e));
-  });
+
+  document.querySelectorAll(".project").forEach(
+    element => { 
+      element.addEventListener("click", e => openModal(e) ); 
+    });
+
   document.body.addEventListener("click", e => closeModal(e));
 };
 
@@ -25,11 +28,15 @@ function clickRight() {
   switch( newValue ){
     case -270: 
     document.querySelector( '.project1' ).setAttribute( 'tabindex', '-1' )
+    document.querySelector( '.project1-container' ).setAttribute( 'aria-hidden', 'true' )
     document.querySelector( '.project4' ).removeAttribute( 'tabindex' )
+    document.querySelector( '.project4-container' ).removeAttribute( 'aria-hidden' )
     return
     case -540:
       document.querySelector( '.project2' ).setAttribute( 'tabindex', '-1' )
+      document.querySelector( '.project2-container' ).setAttribute( 'aria-hidden', 'true' )
       document.querySelector( '.project5' ).removeAttribute( 'tabindex' )
+      document.querySelector( '.project5-container' ).removeAttribute( 'aria-hidden' )
     return
     default:
       return
@@ -48,16 +55,18 @@ function clickLeft() {
   }
   let newValue = currentLeft + 270;
   document.querySelector(".project-container").style.left = `${newValue}px`;
-  console.log( newValue );
-  debugger
   switch( currentLeft ){
     case -540: 
       document.querySelector( '.project5' ).setAttribute( 'tabindex', '-1' )
+      document.querySelector( '.project5-container' ).setAttribute( 'aria-hidden', 'true' )
       document.querySelector( '.project2' ).removeAttribute( 'tabindex' )
+      document.querySelector( '.project2-container' ).removeAttribute( 'aria-hidden' )
     return
     case -270:
       document.querySelector( '.project4' ).setAttribute( 'tabindex', '-1' )
+      document.querySelector( '.project4-container' ).setAttribute( 'aria-hidden', 'true' )
       document.querySelector( '.project1' ).removeAttribute( 'tabindex' )
+      document.querySelector( '.project1-container' ).removeAttribute( 'aria-hidden' )
     return
     default:
       return
@@ -74,12 +83,20 @@ function showNotification() {
 
 /** Esta funcion se llama cuando la persona hace click en cualquier porjecto del carousel */
 function openModal(e) {
+  const url = e.target.localName === 'button' 
+    ? e.target.firstElementChild.src
+    : e.target.src
   document.querySelector(".modal-container").style.display = "flex";
+  document.querySelector('.modal-project-image').style.cssText = `
+    background: center / cover no-repeat url('${ url }');
+  `
+  e.stopPropagation()
 }
 
 /** Esta funcion se llama para cerrar el modal */
 function closeModal(e) {
   // si el click occurio dentro del las imagenes del carousel o dentro del modal, no se cierra el modal
+  
   if (
     e.target.className.includes("project") ||
     e.target.className === "modal"

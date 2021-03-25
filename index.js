@@ -11,6 +11,7 @@ window.onload = () => {
     });
 
   document.body.addEventListener("click", e => closeModal(e));
+  document.body.addEventListener( 'keyup', e => listentForKey(e) )
 };
 
 /** Esta funcion se llama cuando la persona hace click en la fecha derecha del carousel para navegar a la derecha */
@@ -90,13 +91,18 @@ function openModal(e) {
   document.querySelector('.modal-project-image').style.cssText = `
     background: center / cover no-repeat url('${ url }');
   `
+  document.querySelector( '.modal-cerrar' ).focus()
   e.stopPropagation()
+}
+
+function listentForKey(e){
+  e.key === 'Escape' ? closeModal(e) : null
 }
 
 /** Esta funcion se llama para cerrar el modal */
 function closeModal(e) {
   // si el click occurio dentro del las imagenes del carousel o dentro del modal, no se cierra el modal
-  
+  console.log(e.target);
   if (
     e.target.className.includes("project") ||
     e.target.className === "modal"

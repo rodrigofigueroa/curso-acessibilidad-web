@@ -76,10 +76,11 @@ function clickLeft() {
 
 /** Esta funcion se llama cuando la persona hace click en el boton de enviar del formulario de contacto */
 function showNotification() {
-  document.querySelector(".notification").style.display = "flex";
-  setTimeout(function() {
-    document.querySelector(".notification").style.display = "none";
-  }, 3000);
+  const not = document.querySelector(".notification")
+  not.style.display = "flex"
+  not.textContent = 'El formulario fue enviado sin errores'
+  not.focus()
+  setTimeout( () => not.style.display = "none" , 5000 )
 }
 
 /** Esta funcion se llama cuando la persona hace click en cualquier porjecto del carousel */

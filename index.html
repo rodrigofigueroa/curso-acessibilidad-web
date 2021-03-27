@@ -120,28 +120,29 @@
             Nombre
           </p>
           <input type="text" aria-label="Ingresa tú nombre" name="name_user"/> 
-          <span class="span-error"></span>
+          <span class="span-error" aria-live="assertive" ></span>
         </label>
         <label for="" class="labels">
           <p class="input-label">
             Correo
           </p>
           <input type="text" aria-label="Ingresa tú correo" name="email"/> 
-          <span class="span-error"></span>
+          <span class="span-error" aria-live="assertive"></span>
         </label>
         <div class="message-input">
           <label for="">
             <p class="input-label">
               Mensaje
             </p>
-            <input type="text" name="message"/> 
-            <span class="span-error"></span>
+            <input type="text" aria-label="Ingresa algun mensaje" name="message"/> 
+            <span class="span-error" aria-live="assertive"></span>
           </div>
           </label>
         <button class="send-button">Enviar</button>
       </form>
     </footer>
-    <div class="notification">El formulario fue enviado sin errores</div>
+    <div class="notification" tabindex="0">
+    </div>
     <div class="modal-container">
       <div class="modal">
         <h2 class="header" id="modal_h2">

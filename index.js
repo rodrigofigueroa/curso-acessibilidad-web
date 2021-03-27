@@ -3,7 +3,7 @@ window.onload = () => {
   document.querySelector(".arrow-left").addEventListener("click", clickLeft);
   document
     .querySelector(".send-button")
-    .addEventListener("click", showNotification);
+    .addEventListener("click", validateForm);
 
   document.querySelectorAll(".project").forEach(
     element => { 
@@ -112,3 +112,43 @@ function closeModal(e) {
     document.querySelector(".modal-container").style.display = "none";
   }
 }
+
+function validateForm(e){
+    e.preventDefault()
+  const form      = document.querySelector('form'),
+        regex     = {
+          name_user: /^([a-z]|[A-Z]| )+$/,
+          email: /^(.+)@(.+)(.+)$/,
+          message: /^(.)+$/
+        },
+        errorData = {
+          name_user: 'Ingresa un Nombre valido',
+          email: 'Ingresa un email valido',
+          message: 'Ingresa un Mensaje valido'
+        },
+        stillForm = {
+          name_user: false,
+          email: false,
+          message: false
+        }
+      form.querySelectorAll( 'input' )
+        .forEach( input => {
+        const error   = validateEachInput( input.value, regex[ input.name ] ),
+                span  = input.parentNode.querySelector('span')
+        if( !error ){
+          span.innerHTML = errorData[ input.name ]
+        }else{
+          stillForm[ input.name ] = true
+          span.innerHTML = ''
+        }
+      })
+      for( check in stillForm ){
+        if( !stillForm[ check ] ){
+          return
+        }
+      }
+      form.reset()
+      showNotification()
+}
+
+const validateEachInput = ( value, regex ) => regex.test( value ) 
